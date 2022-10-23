@@ -1,1 +1,26 @@
-<%# Update me %><%= @monsters.inspect %>
+<h1>Names of all the monsters</h1>
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Operación</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @monsters.each do |monster| %>
+            <tr>
+                <td><%= link_to monster.name, monster %></td>
+                <td><% if(monster.tweets.count > 1) %>
+                            <p class="text_danger"> "Twitero Destacado" </p>
+                       <% else %> 
+                            <p class="text-info"> "Twitero No Destacado" </p> 
+                        <% end %>               
+                </td> 
+                <td><%= button_to "Eliminar","", class: "btn btn-danger" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

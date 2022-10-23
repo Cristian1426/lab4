@@ -1,1 +1,27 @@
-<%# Update me %><%= @monster.inspect %>
+<div class="container">
+  <div class="row">
+        <div class="col">
+            <h1>
+             <%= @monster.name %>
+            </h1>
+            <p>
+             <%= @monster.description %>
+            </p>
+            <%= button_to "Eliminar","", class: "btn btn-danger" %>
+        </div>
+        <div class="col" style="height: 360px; overflow-y: scroll;">
+            <% if ( @monster.tweets.count>0 ) %>
+            <% @monster.tweets.each do |tweet| %>
+            <div class="card mb-4">
+                <h5 class="card-header"><%= @monster.name %></h5>
+                <div class="card-body">
+                    <p class="card-text"><%= tweet.content %></p>
+                    <p class="fst-italic"><%= tweet.created_at %></p>
+                </div>
+            </div>
+            <% end %>
+            <% else %> <h5> No hay tweets disponibles </h5>
+                <% end %>
+        </div>
+    </div>
+  </div>
